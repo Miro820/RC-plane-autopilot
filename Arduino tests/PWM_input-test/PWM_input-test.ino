@@ -1,10 +1,10 @@
 
-const int ch1_in = 12;
+const int ch3_in = 12;
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-  pinMode(ch1_in, INPUT);
+  pinMode(ch3_in, INPUT);
 }
 
 void loop() {
@@ -12,5 +12,5 @@ void loop() {
 
   // pulseIn measures how long the pin stays HIGHn in microseconds...
   // With this, the input signal can already be seen in the serial plotter
-  Serial.println(pulseIn(ch1_in, HIGH));
+  Serial.println(pulseIn(ch3_in, HIGH));
 }
