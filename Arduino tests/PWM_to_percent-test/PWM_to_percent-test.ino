@@ -8,7 +8,7 @@ void setup() {
 }
 
 void loop() {
-  // pulseIn measures how long the pin stays HIGHn in microseconds...
+  // pulseIn measures how long the pin stays HIGH in microseconds...
   // With this, the input signal can already be seen in the serial plotter
   int ch3_in_pwm = pulseIn(ch3_in, HIGH);
   // the pulse witdh of a PWM servo signal has a range of about 1000µs - 2000µs
