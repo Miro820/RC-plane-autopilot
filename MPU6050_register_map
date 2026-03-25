@@ -1,0 +1,46 @@
+The MPU-6050 is a 6-axis motion tracking device (3-axis gyro + 3-axis accelerometer) with I2C address 0x68 (or 0x69 if AD0 is high). Key registers include 0x3B-0x40 (accelerometer), 0x43-0x48 (gyro), 0x6B (power management) to wake the sensor, and 0x75 (WHO_AM_I, which returns 0x68). 
+Key MPU6050 Register Addresses
+0x00–0x0C: Sensor Data Internal Registers (Reserved)
+0x0D–0x0F: Self-Test Registers (XA_TEST, YA_TEST, ZA_TEST)
+0x10–0x12: Self-Test Registers (XG_TEST, YG_TEST, ZG_TEST)
+0x13–0x18: Reserved
+0x19: SMPLRT_DIV (Sample Rate Divider)
+0x1A: CONFIG (DLPF configuration)
+0x1B: GYRO_CONFIG (Gyroscope scale: ±250–2000°/s)
+0x1C: ACCEL_CONFIG (Accelerometer scale: ±2g–16g)
+0x3A: INT_STATUS (Interrupt status)
+0x3B–0x3C: ACCEL_XOUT_H/L
+0x3D–0x3E: ACCEL_YOUT_H/L
+0x3F–0x40: ACCEL_ZOUT_H/L
+0x41–0x42: TEMP_OUT_H/L
+0x43–0x44: GYRO_XOUT_H/L
+0x45–0x46: GYRO_YOUT_H/L
+0x47–0x48: GYRO_ZOUT_H/L
+0x6A: USER_CTRL (Enable FIFO, I2C Master, DMP)
+0x6B: PWR_MGMT_1 (Wakes up the chip, select clock source)
+0x75: WHO_AM_I (Device ID - usually 0x68) 
+Reddit
+Reddit
+ +4
+Essential Setup Sequence
+Wake Up (0x6B): Write 0x00 to PWR_MGMT_1 to wake the sensor.
+Config (0x1A): Set Digital Low Pass Filter (e.g., 0x03).
+Gyro (0x1B): Set scale (e.g., 0x00 for 
+
+).
+Accel (0x1C): Set scale (e.g., 0x00 for 
+).
+Check (0x75): Read to verify the device address is 0x68. 
+Note: Register names ending in _H and _L contain the high and low bytes respectively, forming a 16-bit signed integer for each axis. 
+
+https://share.google/uozQvmuP3GkoJ0SEN
+https://share.google/wd8wUlFjvTThG4aoz
+https://share.google/rRg3ixj5lHM6KRhXC
+https://share.google/I86s1idpBMxbngDlM
+https://share.google/Zc0qu3NHinnGWa8AK
+https://share.google/sezQHWG5vwaAeneac
+https://share.google/g75YcV3wFfZ250vhb
+https://share.google/wOevb06XQJGOnCEbJ
+https://share.google/d77aHgyv5t2OtLec7
+https://share.google/cFZZNKNGavCkgKbay
+https://share.google/nY2kL5IMBUKQneIWh
