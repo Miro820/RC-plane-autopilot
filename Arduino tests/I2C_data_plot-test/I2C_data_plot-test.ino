@@ -2,14 +2,19 @@
 #include <Wire.h>
 
 int MPU_adress = 0x68;
+int MPU_Wake = 0x6B
 
 void setup() {
   Wire.begin(); //start I²C communication
   Serial.begin(115200);
 
-  Wire.beginTransmission(MPU_adress);
+  Wire.beginTransmission(MPU_Wake);
   Wire.write(0x00); // Wake up the sensor, by sending 0 to 0x6B (= PWR_MGMT_1);
-  Wire.endTransmission(MPU_adress);
+  Wire.endTransmission(MPU_Wake);
+  
+  Wire.beginTransmission(0x1A);
+  Wire.write(0x03); // configure digital low pass filter
+  Wire.endTransmission(0x1A);
 
 }
 
