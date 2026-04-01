@@ -2,7 +2,7 @@
 #include <Wire.h>
 
 int MPU_adress = 0x68;
-int MPU_Wake = 0x6B
+int MPU_Wake = 0x6B;
 
 void setup() {
   Wire.begin(); //start I²C communication
