@@ -31,13 +31,7 @@ void setup() {
 void loop() {
   read_MPU();
 
-  int alpha;
-  for (int i = 1; thisPin < 30; i++) {
-    alpha += atan2(mpu_full_read[4], mpu_full_read[5])* RAD_TO_DEG;
-    delay(10);
-
-  }
-  alpha = alpha/30
+  int alpha = atan2(mpu_full_read[4], mpu_full_read[5])* RAD_TO_DEG;
   
   Serial.println(alpha);
 }
