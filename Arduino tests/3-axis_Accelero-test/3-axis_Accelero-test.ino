@@ -36,7 +36,16 @@ void loop() {
   Serial.print(mpu_full_read[5]);
   Serial.print(",");
   Serial.print(mpu_full_read[6]);
+  Serial.print(",");
+  Serial.print(mpu_full_read[0]);
+  Serial.print(",");
+  Serial.print(mpu_full_read[1]);
+  Serial.print(",");
+  Serial.print(mpu_full_read[2]);
+  Serial.print(",");
+  Serial.print(mpu_full_read[3]);
   Serial.println("");
+  
 
   delay(10); 
 }
