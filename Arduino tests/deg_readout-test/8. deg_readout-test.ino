@@ -31,12 +31,12 @@ void setup() {
 void loop() {
   read_MPU();
 
-  int alpha = atan2(mpu_full_read[4], mpu_full_read[5])* RAD_TO_DEG; // calculate alpha (=roll) with x & y coordinates
+  int alpha = atan2(mpu_full_read[4], mpu_full_read[6])* RAD_TO_DEG; // calculate alpha (=roll) with x & y coordinates
   
-  int xy = sqrt(pow(mpu_full_read[4], 2) + pow(mpu_full_read[5], 2));
-  int beta = atan2(mpu_full_read[6], xy)* RAD_TO_DEG; // calculate beta (=tilt) with xy & z coordinates
-  //Serial.println(alpha);
-  //Serial.print(",");
+  int xz = sqrt(pow(mpu_full_read[4], 2) + pow(mpu_full_read[6], 2));
+  int beta = atan2(mpu_full_read[5], xz)* RAD_TO_DEG; // calculate beta (=tilt) with xy & z coordinates
+  Serial.print(alpha);
+  Serial.print(",");
   Serial.println(beta);
 }
 
@@ -82,7 +82,7 @@ int16_t read_MPU() {
   int16_t accel_xout = (ACCEL_XOUT_H << 8) | ACCEL_XOUT_L; // Shift high byte with 8 bits to the left... Then use "or" to combine with the lower byte
   
   Wire.beginTransmission(MPU_adress);
-  Wire.write(0x3F); // select the ACCEL_YOUT_H register
+  Wire.write(0x3D); // select the ACCEL_YOUT_H register
   Wire.endTransmission(); 
   Wire.requestFrom(MPU_adress, 2); // request 2 bytes of data from MPU_adress
   int16_t ACCEL_YOUT_H = Wire.read(); // Receive ACCEL_YOUT_H data (use 16 bits, so the data can be shifted by 6 bits to the left, without data loss 0000 1010 => 1010 0000)
@@ -90,7 +90,7 @@ int16_t read_MPU() {
   int16_t accel_yout = (ACCEL_YOUT_H << 8) | ACCEL_YOUT_L; // Shift high byte with 8 bits to the left... Then use "or" to combine with the lower byte
    
   Wire.beginTransmission(MPU_adress);
-  Wire.write(0x47); // select the ACCEL_ZOUT_H register
+  Wire.write(0x3F); // select the ACCEL_ZOUT_H register
   Wire.endTransmission(); 
   Wire.requestFrom(MPU_adress, 2); // request 2 bytes of data from MPU_adress
   int16_t ACCEL_ZOUT_H = Wire.read(); // Receive ACCEL_ZOUT_H data (use 16 bits, so the data can be shifted by 6 bits to the left, without data loss 0000 1010 => 1010 0000)

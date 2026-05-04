@@ -137,7 +137,7 @@ Ik overloop hieronder de verschillende vliegtuigen die ik doorheen mijn leven al
 
 #### 6. FT Edge 540
 
-https://www.flitetest.com/articles/ft-edge-release
+>Dit vliegtuig is gebaseerd op een Red Bull Air Race vliegtuig en werd gemaakt aan de hand van de instructie-video en patronen op de [Flight Test website](https://www.flitetest.com/articles/ft-edge-release).
 
 <img align="left" src="img/Plane6_1.jpg" width="40%" style="margin-right: 20px">
 
