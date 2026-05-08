@@ -10,7 +10,7 @@
 #include <math.h>
 #include <Servo.h>
 
-const int ch3_in = 12;
+const int ch2_in = 2;
 
 int MPU_adress = 0x68;
 int MPU_Wake = 0x6B; //Register for waking up the sensor
@@ -42,17 +42,17 @@ void setup() {
   Wire.write(0x04); // Set Digital Low Pass Filter (DLPF) to 3
   Wire.endTransmission();
 
-  pinMode(ch3_in, INPUT);
+  pinMode(ch2_in, INPUT);
   servo1.attach(3);  // attaches the servo on pin 3 to the Servo object
   
 }
 
 void loop() {
   int pos1 = 90;
-  int ch3 = pwm_to_degree(pulseIn(ch3_in, HIGH));       // Read the PWM signal of ch3 + convert to degree's
-  Serial.println(ch3);  
+  int ch2 = pwm_to_degree(pulseIn(ch2_in, HIGH));       // Read the PWM signal of ch2 + convert to degree's
+  Serial.println(ch2);  
 
-  if (ch3 >= (90 - levelling_range) && ch3 <= (90 + levelling_range)) {
+  if (ch2 >= (90 - levelling_range) && ch2 <= (90 + levelling_range)) {
 
     read_MPU();
 
@@ -69,7 +69,7 @@ void loop() {
 
 
   else {
-    pos1 = ch3;
+    pos1 = ch2;
   }
 
   pos1  = constrain(pos1, 0, 180); // make sure that pos1 is a valid value, before writing to servo.

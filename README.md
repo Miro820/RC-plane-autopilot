@@ -1,9 +1,9 @@
 # RC-plane-autopilot
 An Arduino project to make me a better RC-pilot
 
-🛠️ Built by ``Miro Mangelschots``  
-👀 Supervised by ``Wouter Devriese``    
-@ ``Ghent University`` 🏛️ ``Industrial Design Engineering``
+🛠️ Built by `Miro Mangelschots`
+👀 Supervised by `Wouter Devriese`
+@ `Ghent University` 🏛️ `Industrial Design Engineering`
 
 11/04/2026
 
@@ -19,8 +19,8 @@ An Arduino project to make me a better RC-pilot
 
 ## Inhoud
 
-[A brief history]()
-[Verloop project]()
+[A brief history](#a-brief-history)
+[Verloop project](#verloop-project)
 [...]()
 [...]()
 [...]()
@@ -162,6 +162,73 @@ Ik overloop hieronder de verschillende vliegtuigen die ik doorheen mijn leven al
 >Alhoewel ik een simulator had kunnen gebruiken om te trainen, is het vliegtuig gewoon aan mijn muur belandt.
 >Op deze het idee belandt om een vliegassistent te meken voor mijn RC-vliegtuig.
 
+<br>
+
+### Verloop project
+#### 1. PWM input
+PWM signaal van Flysky receiver inlezen en plotten met ``pulseIn()``.
+``PulseIn(pin, HIGH)`` leest hoeveel microseconden de pulse van het PMW-signaal ``HIGH`` is.
+<p align="center">
+  <img src="img/PWM_input-test schema.png" width="100%">
+</p>
+<p align="center">
+  <img src="img/img2.jpg" width="50%">
+</p>
+<br>
+
+#### 2. PWM naar percent
+Het ingelezen PWM-signaal staat uitgedrukt in µs, met een waarde tussen ``1000µs`` en ``2000µs``. Deze waarde wordt hier omgerekent naar percent.
+
+``pulseIn`` meet hoe lang een pin ``HIGH`` blijft in microseconden. Hiermee kan het input signaal al gezien worden in de plotter. Daarna wordt het omgerekend naar een percentage.
+
+Later bleek dat percentage niet nuttig was. In de finale code werdt het PWM-signaal omgerekend naar graden i.p.v. percent.
+<br>
+
+#### 3. I²C protocol
+#TODO er bestaan librarys voor mpu6050... maar leuker zo en meer leerijk
+
+<br>
+
+#### 4. MPU6050
+#TODO
+verschillende data:
+accel:
+xyz
+gyro:
+xyz
+T
+<br>
+
+#### 5. Graden °
+
+<br>
+
+#### 6. Servo
+
+<br>
+
+#### 7. Mixing
+
+
+
+<br>
+
+#### 8. Debugging
+pulsin blocking... ==> using interrupt (meet begintijd, dan meet eindtijd => trek van elkaar af)
+
+Readmpu 2x per loop => once
+
+alpha verkeerd gemapt
+
+<br>
+
+#### 9. Smaller is better
+
+werkt ook met nano, zonder extra aanpassingen:
+Pins 2 and 3 → interrupt pins ✓
+Pins 5, 6, 9 → PWM servo pins ✓
+A4/A5 → I²C (SDA/SCL) ✓
+<br>
 
 ## Noot inzake het gebruik van AI
 🚧 Under construction...
